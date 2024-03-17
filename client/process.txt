@@ -1,0 +1,51 @@
+# creating app 
+
+npm create vite@latest
+
+cd client 
+npm install 
+npm run dev 
+
+
+# installing libraries
+npm i @reduxjs/toolkit react-redux react-router-dom @mui/material @emotion/react @emotion/styled @mui/icons-material @mui/x-data-grid 
+
+npm i -D @types/react-dom 
+
+
+# configuring eslint 
+- install dependencies
+npm i -D eslint eslint-config-react-app 
+
+- create eslintrc.json file under 'client' folder. 
+code: 
+{
+    "extends" : "react-app" 
+} 
+
+
+# setting up .env.local 
+- create '.env.local' file under 'client' folder. 
+
+# configuring tsconfig.json 
+- add "types": ["vite/client"] 
+
+# configuring '@' for import 
+- add  
+/* Configuring path  */
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+
+- add in vite.config.ts 
+npm i -D @types/node 
+import path from 'path' 
+resolve: { 
+    alias: [{ find: '@', replacement: path.resolve(__dirname, 'src') }]
+  } 
+
+  
+
+
+
+
