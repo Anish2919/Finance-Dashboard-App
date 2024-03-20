@@ -46,6 +46,31 @@ resolve: {
 
   
 
+// configuring eslint in typescript js 
+npm i -D eslint
+npx eslint --init 
+
+// configuring airbnb eslit 
+npx install-peerdeps --dev eslint-config-airbnb 
+
+Note: 
 
 
 
+
+----------- Mui Config and Theme config -- 
+we have to use module augmentation to add new variables to the theme and themeoptions. 
+declare module '@mui/material/styles' {
+  interface Theme {
+    status: {
+      danger: string;
+    };
+  }
+  // allow configuration using `createTheme`
+  interface ThemeOptions {
+    status?: {
+      danger?: string;
+    };
+  }
+}
+ 
