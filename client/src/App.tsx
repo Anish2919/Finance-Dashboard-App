@@ -2,12 +2,19 @@
 // import viteLogo from '/vite.svg'
 // import './App.css'
 
+import { createTheme, ThemeProvider } from "@mui/material/styles"; 
+import { useMemo } from "react"
+import { themeSettings } from "./theme"
+import { CssBaseline } from "@mui/material";
+
+
 function App() {
-  
-  return (
-    <>
-      <h1>Hello anish</h1>
-    </>
+  const theme = useMemo(() => createTheme(themeSettings), []); 
+   return (
+    <ThemeProvider theme={theme}>
+      <CssBaseline /> 
+      <h1>hi</h1>
+    </ThemeProvider>
   )
 }
 
