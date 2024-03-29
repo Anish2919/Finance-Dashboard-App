@@ -3,19 +3,42 @@
 // import './App.css'
 
 import { createTheme, ThemeProvider } from "@mui/material/styles"; 
-import { useMemo } from "react"
+import {  useMemo } from "react"
 import { themeSettings } from "./theme"
-import { CssBaseline } from "@mui/material";
+import { Box, CssBaseline} from "@mui/material";
+import {Route, RouterProvider, createBrowserRouter, createRoutesFromElements} from "react-router-dom"; 
+import Layout from "./components/common/Layout";
+import PageNotFound from "./scenes/errors/PageNotFound";
+import Predictions from "./scenes/predictions";
+import Dashboard from "./scenes/dashboard";
+
+const routes = createRoutesFromElements(
+  <>
+    <Route path="/" element={<><Layout /></>}>
+      <Route index element={<>This is home Page.</>}/> 
+      <Route path="dashboard" element={<Dashboard />} /> 
+      <Route path="predictions" element={<Predictions />} /> 
+      <Route path="*" element={<PageNotFound />} /> 
+    </Route>
+  </>
+)
+
+const router = createBrowserRouter(routes); 
 
 
 function App() {
   const theme = useMemo(() => createTheme(themeSettings), []); 
    return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline /> 
-      <h1>hi</h1>
-    </ThemeProvider>
+    <>
+      <ThemeProvider theme={theme}>
+        <CssBaseline /> 
+        <Box width="100%" height="100%" padding="1rem 2rem 4rem 2rem"> 
+          <RouterProvider router={router} /> 
+        </Box>
+      </ThemeProvider>
+    </>
   )
 }
 
 export default App
+ 
