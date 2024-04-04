@@ -15,7 +15,7 @@ import Dashboard from "./scenes/dashboard";
 const routes = createRoutesFromElements(
   <>
     <Route path="/" element={<><Layout /></>}>
-      <Route index element={<>This is home Page.</>}/> 
+      <Route index element={<Dashboard />} /> 
       <Route path="dashboard" element={<Dashboard />} /> 
       <Route path="predictions" element={<Predictions />} /> 
       <Route path="*" element={<PageNotFound />} /> 

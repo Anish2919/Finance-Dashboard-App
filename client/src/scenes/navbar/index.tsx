@@ -2,12 +2,20 @@ import FlexBetween from "@/components/FlexBetween"
 import { Box, Typography, useTheme } from "@mui/material"
 import { useState } from "react";
 import PixIcon from '@mui/icons-material/Pix';
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Navbar = () => {
-  const {palette} = useTheme(); 
+  const {palette} = useTheme();
+  const [selected, setSelected] = useState('dashboard'); 
 
-  const [selected, setSelected] = useState("dashboard"); 
+  // activating the navitem according the url 
+  const location = useLocation(); 
+  if(location.pathname.startsWith('/dashboard') || location.pathname.endsWith('/')) {
+    selected !== 'dashboard' && setSelected('dashboard');  
+  } else { 
+    selected !== 'predictions' && setSelected('predictions'); 
+  }
+
   return (
     <>
       <FlexBetween 

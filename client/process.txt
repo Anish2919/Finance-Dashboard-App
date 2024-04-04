@@ -94,6 +94,29 @@ const FlexBetween = styled(Box) ({
 we also used Typorgraphy. from material ui. 
 
 
+-------------- Dashboard layout ---------------- 
+NOTE: 'flexbox' is good for one directional. But if it's horizontal and vertical, grid'll be best (like assymetrical situations). 
+link: grid.malven.co. GirdArea is good to use.
+
+created DashboardBox like FlexBox. 
+- however, we've used styled with theme props in this. 
+
+Here is the example: 
+const DashboardBox = styled(Box)(({ theme }) => ({
+    backgroundColor: theme.palette.background.light, 
+    borderRadius: "1rem", 
+    boxShadow: "0.15rem 0.2rem 0.15rem 0.1rem rgba(0, 0, 0, 0.8)"
+}))
+
+--- we used "useMediaQuery" api from "@mui/material". 
+Here is the code example: 
+  const isAboveMediumScreens = useMediaQuery("(min-width: 1200px)");
+
+
+-- we have used gridTemplateArea for layout. 
+
+
+
   
 
 
