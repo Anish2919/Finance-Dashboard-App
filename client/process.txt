@@ -115,6 +115,16 @@ Here is the code example:
 
 -- we have used gridTemplateArea for layout. 
 
+-------------- ReduxToolkit setup and configuration ---------------- 
+created store and api.ts. 
+entered store provider in app.tsx. 
+
+
+
+
+
+
+
 
 
   
