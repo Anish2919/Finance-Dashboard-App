@@ -11,8 +11,6 @@ import Layout from "./components/common/Layout";
 import PageNotFound from "./scenes/errors/PageNotFound";
 import Predictions from "./scenes/predictions";
 import Dashboard from "./scenes/dashboard";
-import { useGetPokemonByNameQuery } from "./state/api";
-
 
 const routes = createRoutesFromElements(
   <>
@@ -30,11 +28,6 @@ const router = createBrowserRouter(routes);
 
 function App() {
   const theme = useMemo(() => createTheme(themeSettings), []); 
-
-  const { data, error, isLoading } = useGetPokemonByNameQuery('bulbasaur'); 
-
-  data ? console.log('data: ', data.abilities) : console.log('no data: '); 
-
    return (
     <>
       <ThemeProvider theme={theme}>
