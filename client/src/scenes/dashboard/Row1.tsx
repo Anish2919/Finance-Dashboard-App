@@ -1,6 +1,9 @@
 import DashboardBox from "@/components/DashboardBox";
+import { useGetKpisQuery } from "@/state/api";
 
 const Row1 = () => {
+  const { data } = useGetKpisQuery();
+  data ? console.log('data : ', data) : console.log("no data to show"); 
   return (
     <>
       <DashboardBox gridArea="a"></DashboardBox>
