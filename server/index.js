@@ -40,30 +40,30 @@ app.use("/kpi", KpiRoutes);
 const PORT = process.env.PORT || 9000; 
 
 /** MONGOOSE SETUP */
-mongoose.connect(process.env.MONGOSE_URL)
-.then(async() => {
-    app.listen(PORT, () => console.log(`App is running at: ${PORT}`)); 
+// mongoose.connect(process.env.MONGOSE_URL)
+// .then(async() => {
+//     app.listen(PORT, () => console.log(`App is running at: ${PORT}`)); 
     
-    // dropping database before creating new
-    // note: it's only for development purpose. 
-    // await mongoose.connection.db.dropDatabase(); 
+//     // dropping database before creating new
+//     // note: it's only for development purpose. 
+//     // await mongoose.connection.db.dropDatabase(); 
     
-    // inserting data from our local database to the mongoose atlas. 
-    // KPI.insertMany(kpis); 
-})
-.catch((e) => console.log('error from  mongodb: ', e)); 
+//     // inserting data from our local database to the mongoose atlas. 
+//     // KPI.insertMany(kpis); 
+// })
+// .catch((e) => console.log('error from  mongodb: ', e)); 
 
 
-// mongoose.connect('mongodb://0.0.0.0:27017/',)
-//     .then(async () => {
-//         await app.listen(PORT, () => console.log(`App is running at port: ${PORT}`));  
+mongoose.connect('mongodb://0.0.0.0:27017/',)
+    .then(async () => {
+        await app.listen(PORT, () => console.log(`App is running at port: ${PORT}`));  
         
-//         // // dropiing database before creating new 
-//         // await mongoose.connection.db.dropDatabase(); 
+        // // dropiing database before creating new 
+        // await mongoose.connection.db.dropDatabase(); 
 
-//         // // inserting new data from our local database to the mongoose atlas 
-//         // KPI.insertMany(kpis); 
-// 1    })
-//     .catch(e => console.log(`error from mongoose: ${e.message}`)); 
+        // // inserting new data from our local database to the mongoose atlas 
+        // KPI.insertMany(kpis); 
+1    })
+    .catch(e => console.log(`error from mongoose: ${e.message}`)); 
     
     

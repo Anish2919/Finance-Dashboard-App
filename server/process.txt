@@ -72,4 +72,16 @@ With { toJSON: { getters: true } }, the output would include the formatted curre
     // KPI.insertMany(kpis);
 
   
+
+  --------------- Mongodb installation and setup ------------- 
+mongoose
+  .connect(url)
+  .then(async () => app.listen(port, () => console.log(`App is running at port: ${port}`)))
+  .catch((e) => console.log(`error from mongoose: ${e.message}`));
+
+we created data.js to store the inital data. 
+- we created modal 'KPI.js', used mongoose type currency. 
+-  used 'mongoose.connection.db.dropDatabase()' to drop database 
+- used 'KPI.insertMany(kpis)' to populate the database data. 
+
   

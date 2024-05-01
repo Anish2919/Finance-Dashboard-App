@@ -10,7 +10,7 @@ export const api = createApi({
     reducerPath: 'Kpi', 
     endpoints: (build) => ({
         // This query accepts a void and returns a kpiAttribute types. 
-        getKpis: build.query<KPIAttributes, void>({
+        getKpis: build.query<Array<KPIAttributes>, void>({
             // note: an optional 'queryFn' can be used in place of query
             query: () => ({url: 'kpi/kpis'}), 
             // pick out data and prevent nested properties in a hook or selector
