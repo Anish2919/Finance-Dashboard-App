@@ -20,3 +20,15 @@ export interface KPIAttributes {
     monthlyData: MonthData[]; 
     dailyData: DailyData[]; 
 }
+
+export interface Transaction {
+    buyer: number; 
+    amount: number; 
+    productIds: string, 
+} 
+
+export interface ProductResponse {
+    price: number; 
+    expense: number; 
+    transactions: string; 
+}

@@ -3,18 +3,31 @@ import Row1 from "./Row1";
 import Row2 from "./Row2";
 import Row3 from "./Row3";
 
+// const gridTemplateLargeScreen = `
+//   "a b c" 
+//   "a b c" 
+//   "a b c" 
+//   "a b f"
+//   "d e f"  
+//   "d e f"  
+//   "d h i"  
+//   "g h i"  
+//   "g h j"  
+//   "g h j"  
+// `; 
+
 const gridTemplateLargeScreen = `
-  "a b c" 
-  "a b c" 
-  "a b c" 
+  "a b c"
+  "a b c"
+  "a b c"
   "a b f"
-  "d e f"  
-  "d e f"  
-  "d h i"  
-  "g h i"  
-  "g h j"  
-  "g h j"  
-`; 
+  "d e f"
+  "d e f"
+  "d e i"
+  "g h i"
+  "g h j"
+  "g h j"
+`;
 
 const gridTemplateSmallScreen = `
   "a"

@@ -162,6 +162,7 @@ const Row1 = () => {
             </LineChart>
         </ResponsiveContainer>
       </DashboardBox>
+      
       <DashboardBox gridArea="c">
         <BoxHeader 
           title="Revenue Month by Month"
@@ -202,7 +203,7 @@ const Row1 = () => {
               tickLine={false} 
               style={{ fontSize: "10px" }}
                />
-            {/* <Tooltip /> */}
+            <Tooltip/>
             {/* <Legend />   */}
             <Bar dataKey="revenue" fill="url(#colorRevenue)" activeBar={<Rectangle fill="pink" stroke="blue" />} />
           </BarChart>
