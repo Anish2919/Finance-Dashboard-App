@@ -5,11 +5,13 @@ import helmet from 'helmet';
 import dotenv from 'dotenv'; 
 import bodyParser from 'body-parser';
 import KpiRoutes from './router/kpi.js'; 
-import ProductRoutes from './router/product.js'; 
+import ProductRoutes from './router/product.js';
+import TransactionRoutes from './router/transaction.js'; 
 import KPI from './modals/KPI.js';
 import Product from './modals/Product.js';
 import { kpis, products, transactions } from './data/data.js';
 import cors from 'cors'; 
+import Transaction from './modals/Transaction.js';
 
 /** CONFIGURATIONS */
 dotenv.config(); 
@@ -37,6 +39,7 @@ app.use(cors(corsOptions));
 /** ROUTES */
 app.use("/kpi", KpiRoutes); 
 app.use("/product", ProductRoutes); 
+app.use("/transactions", TransactionRoutes); 
 
 const PORT = process.env.PORT || 9000; 
 
@@ -64,9 +67,10 @@ mongoose.connect('mongodb://0.0.0.0:27017/', {
         // // dropiing database before creating new 
         // await mongoose.connection.db.dropDatabase(); 
 
-        // // // inserting new data from our local database to the mongoose atlas 
+        // // // // inserting new data from our local database to the mongoose atlas 
         // KPI.insertMany(kpis); 
         // Product.insertMany(products); 
+        // Transaction.insertMany(transactions)
 1    })
     .catch(e => console.log(`error from mongoose: ${e.message}`)); 
     

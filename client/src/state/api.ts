@@ -1,5 +1,5 @@
 // import { KPIAttributes,ProductResponse } from "@/utils/api.interface";
-import { GetKpisResponse, GetProductsResponse } from "@/utils/types";
+import { GetKpisResponse, GetProductsResponse, GetTransactionsResponse } from "@/utils/types";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 
@@ -8,7 +8,7 @@ export const api = createApi({
     baseQuery: fetchBaseQuery({
         baseUrl: 'http://localhost:1337/'
     }), 
-    tagTypes: ['Kpis', 'Products'], 
+    tagTypes: ['Kpis', 'Products', 'Transactions'], 
     endpoints: (build) => ({
         // This query accepts a void and returns a kpiAttribute types. 
         getKpis: build.query<Array<GetKpisResponse>, void>({
@@ -32,10 +32,14 @@ export const api = createApi({
         // deleteProduct: build.query<>({
         //     query: () => (), 
         // })
+        getTransactions: build.query<Array<GetTransactionsResponse>, void>({
+            query: () => '/transactions/transactions',
+            providesTags: ["Transactions"]
+        })
     })
 });  
 
-export const { useGetKpisQuery, useGetProductsQuery } = api; 
+export const { useGetKpisQuery, useGetProductsQuery, useGetTransactionsQuery } = api; 
 
 
 // export const api = createApi({
