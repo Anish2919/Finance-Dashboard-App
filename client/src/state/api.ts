@@ -6,7 +6,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const api = createApi({
     reducerPath: 'main', 
     baseQuery: fetchBaseQuery({
-        baseUrl: 'http://localhost:1337/'
+        baseUrl: 'http://localhost:9000/'
     }), 
     tagTypes: ['Kpis', 'Products', 'Transactions'], 
     endpoints: (build) => ({
@@ -33,7 +33,7 @@ export const api = createApi({
         //     query: () => (), 
         // })
         getTransactions: build.query<Array<GetTransactionsResponse>, void>({
-            query: () => '/transactions/transactions',
+            query: () => '/transaction/transactions',
             providesTags: ["Transactions"]
         })
     })

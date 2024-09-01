@@ -18,8 +18,8 @@ const Row2 = () => {
   const { data: productData } = useGetProductsQuery();  
   const { data: operationalData } = useGetKpisQuery(); 
 
-  console.log('operational Data: ', operationalData); 
-  console.log('product Data: ', productData); 
+  // console.log('operational Data: ', operationalData); 
+  // console.log('product Data: ', productData); 
 
   const operationalExpenses = useMemo(() => {
     return (

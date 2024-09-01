@@ -1,5 +1,8 @@
 # Finance-Dashboard-App
-Build A MERN Finance Dashboard App | Machine Learning, Typescript, React, Node, MUI, Deployment. Youtube link: https://www.youtube.com/watch?v=uoJ0Tv-BFcQ. 
+Build A MERN Finance Dashboard App | Machine Learning, Typescript, React, Node, MUI, Deployment. 
+
+### watch YouTube Video 
+Youtube Link: 
 
 ### Project Overview
 
@@ -22,6 +25,35 @@ This project utilizes real machine learning with a regression library to develop
 - **Express.js:** Used as the web application framework for Node.js.
 - **Mongoose:** Employed as the MongoDB object modeling tool for Node.js.
 
-### Additional Components
-- **Machine Learning Models:** Integrated into the application for predictive analysis.
-- **Regression Library:** Utilized for implementing regression algorithms in the machine learning models.
+
+# How to run the project
+- **git clone** git clone 'url' 
+- **go to client repo:** cd client
+- **go to client repo:** cd client
+- **then install npm packages:** npm install
+- **run client** npm run dev
+- **Then create another terminal and go to server repo** cd server
+- **install package** npm install 
+- **run server** npm run dev
+
+## Server setup: 
+- **create .env file AND enter mongodb_url + port number: 9000** 
+PORT=9000
+MONGODB_URL='mongodb_ur'
+
+## SetUp cors 
+- **go to ./server/index.js** 
+- **update corstOptions, change client host url** 
+const corsOptions = {
+  origin: ENTER_RUNNING_PORT_OF_CLIENT, 
+  optionsSuccessStatus: 200
+} 
+EXAMPLE: 
+const corsOptions = {
+  origin: 'http://localhost:5173', 
+  optionsSuccessStatus: 200
+}
+
+
+## Youtube Video Source for original video: 
+Youtube link: https://www.youtube.com/watch?v=uoJ0Tv-BFcQ. 

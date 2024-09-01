@@ -1,77 +1,52 @@
-import express from 'express'; 
-import morgan from 'morgan';
-import mongoose from 'mongoose'; 
-import helmet from 'helmet'; 
-import dotenv from 'dotenv'; 
-import bodyParser from 'body-parser';
-import KpiRoutes from './router/kpi.js'; 
-import ProductRoutes from './router/product.js';
-import TransactionRoutes from './router/transaction.js'; 
-import KPI from './modals/KPI.js';
-import Product from './modals/Product.js';
-import { kpis, products, transactions } from './data/data.js';
-import cors from 'cors'; 
-import Transaction from './modals/Transaction.js';
+import express from "express";
+import bodyParser from "body-parser";
+import mongoose from "mongoose";
+import cors from "cors";
+import dotenv from "dotenv";
+import helmet from "helmet";
+import morgan from "morgan";
+import kpiRoutes from "./routes/kpi.js";
+import productRoutes from "./routes/product.js";
+import transactionRoutes from "./routes/transaction.js";
+import KPI from "./models/KPI.js";
+import Product from "./models/Product.js";
+import Transaction from "./models/Transaction.js";
+import { kpis, products, transactions } from "./data/data.js";
 
-/** CONFIGURATIONS */
-dotenv.config(); 
-
-// Initialize Express application
-const app = express();  
-// Use helmet middleware to set various HTTP headers for security 
-app.use(helmet());  
-// Use helmet middleware to set cross-origin resource policy (CORP) header 
-app.use(helmet.crossOriginResourcePolicy({policy: "cross-origin"}));  
-// Use morgan middleware for logging HTTP requests 
-app.use(morgan('common')); 
-// Parse incomming JSON requests and make it available in req.body 
-app.use(bodyParser.json()); 
-// Parse URL-encoded data from incoming requests and make it availabe in req.body
-app.use(bodyParser.urlencoded({extended: false})); 
-
+/* CONFIGURATIONS */
+dotenv.config();
+const app = express();
+app.use(express.json());
+app.use(helmet());
+app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
+app.use(morgan("common"));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 /**CONFIGURING CORS */
 const corsOptions = {
-    origin: 'http://localhost:5173', 
-    optionsSuccessStatus: 200
+  origin: 'http://localhost:5173', 
+  optionsSuccessStatus: 200
 }
 app.use(cors(corsOptions)); 
+// app.use(cors());
 
-/** ROUTES */
-app.use("/kpi", KpiRoutes); 
-app.use("/product", ProductRoutes); 
-app.use("/transactions", TransactionRoutes); 
+/* ROUTES */
+app.use("/kpi", kpiRoutes);
+app.use("/product", productRoutes);
+app.use("/transaction", transactionRoutes);
 
-const PORT = process.env.PORT || 9000; 
-
-/** MONGOOSE SETUP */
-// mongoose.connect(process.env.MONGOSE_URL)
-// .then(async() => {
-//     app.listen(PORT, () => console.log(`App is running at: ${PORT}`)); 
-    
-//     // dropping database before creating new
-//     // note: it's only for development purpose. 
-//     // await mongoose.connection.db.dropDatabase(); 
-    
-//     // inserting data from our local database to the mongoose atlas. 
-//     // KPI.insertMany(kpis); 
-// })
-// .catch((e) => console.log('error from  mongodb: ', e)); 
-
-
-mongoose.connect('mongodb://0.0.0.0:27017/', {
-    dbName: "FinanceApp"
+/* MONGOOSE SETUP */
+const PORT = process.env.PORT || 9000;
+mongoose.connect(process.env.MONGODB_URL, {
+  dbName: "FinanceApp"
 })
-    .then(async () => {
-        await app.listen(PORT, () => console.log(`App is running at port: ${PORT}`));  
-        
-        // // dropiing database before creating new 
-        // await mongoose.connection.db.dropDatabase(); 
+  .then(async () => {
+    app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
 
-        // // // // inserting new data from our local database to the mongoose atlas 
-        // KPI.insertMany(kpis); 
-        // Product.insertMany(products); 
-        // Transaction.insertMany(transactions)
-1    })
-    .catch(e => console.log(`error from mongoose: ${e.message}`)); 
-    
-    
+    /* ADD DATA ONE TIME ONLY OR AS NEEDED */
+    // await mongoose.connection.db.dropDatabase();
+    // KPI.insertMany(kpis);
+    // Product.insertMany(products);
+    // Transaction.insertMany(transactions);
+  })
+  .catch((error) => console.log(`${error} did not connect`));
